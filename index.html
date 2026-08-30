@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For The Most Special Person | என் வாழ்க்கையில் மிகவும் சிறப்பான ஒருவருக்காக...</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Great+Vibes&family=Mukta+Malar:wght@400;600;700;800&family=Noto+Serif+Tamil:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Preloader Screen -->
+    <div class="preloader-overlay" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-heart"><i class="fas fa-heart"></i></div>
+            <h2 class="preloader-title">Loading Magic...</h2>
+            <div class="preloader-bar-bg">
+                <div class="preloader-bar-fill" id="preloaderFill"></div>
+            </div>
+            <p class="preloader-sub">Preparing your special experience</p>
+        </div>
+    </div>
+
+    <!-- Background Canvases -->
+    <canvas id="particleCanvas"></canvas>
+    <canvas id="petalsCanvas"></canvas>
+    <canvas id="butterfliesCanvas"></canvas>
+    <canvas id="fireworksCanvas"></canvas>
+    <canvas id="confettiCanvas"></canvas>
+    <canvas id="sparkleTrailCanvas"></canvas>
+    
+    <!-- Ambient Radial Glow Orbs -->
+    <div class="ambient-glow glow-pink"></div>
+    <div class="ambient-glow glow-purple"></div>
+    <div class="ambient-glow glow-gold"></div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav" id="topNav">
+        <div class="nav-brand">
+            <span class="brand-heart"><i class="fas fa-heart"></i></span>
+            <span class="brand-text">Special Appreciation</span>
+        </div>
+        
+        <!-- Page Indicator Dots (10 Pages + Final) -->
+        <div class="page-indicators" id="pageIndicators">
+            <div class="dot active" data-page="1" title="Welcome"></div>
+            <div class="dot" data-page="2" title="Memories"></div>
+            <div class="dot" data-page="3" title="Character"></div>
+            <div class="dot" data-page="4" title="Why Special"></div>
+            <div class="dot" data-page="5" title="Sweet Words"></div>
+            <div class="dot" data-page="6" title="Suggestions"></div>
+            <div class="dot" data-page="7" title="Blessings"></div>
+            <div class="dot" data-page="8" title="If You Like Me"></div>
+            <div class="dot" data-page="9" title="Payment Joke"></div>
+            <div class="dot" data-page="10" title="Final Gift"></div>
+            <div class="dot" data-page="11" title="Thank You"></div>
+        </div>
+
+        <!-- Audio Controls Header -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="musicToggleBtn" title="Play / Pause Music">
+                <i class="fas fa-music"></i>
+                <span class="sound-wave">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+            <button class="nav-btn" id="soundFxBtn" title="Toggle Sound Effects">
+                <i class="fas fa-volume-high"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container Carousel / Pages -->
+    <main class="pages-wrapper">
+
+        <!-- ================= PAGE 1: WELCOME SCREEN ================= -->
+        <section class="page-section active" id="page1">
+            <div class="hero-bg-wrapper">
+                <div class="hero-bg-img" style="background-image: url('photo4.jpg');"></div>
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="page-content glass-card hero-glass">
+                <div class="crown-badge">
+                    <i class="fas fa-crown"></i>
+                </div>
+
+                <div class="lang-block welcome-header">
+                    <h1 class="tamil-title text-gold animate-fade-down">
+                        என் வாழ்க்கையில் மிகவும் சிறப்பான ஒருவருக்காக... ❤️
+                    </h1>
+                    <p class="english-subtitle animate-fade-up">
+                        For the most special person in my life... ❤️
+                    </p>
+                </div>
+
+                <!-- Center Animated Heart Emblem -->
+                <div class="animated-heart-box">
+                    <div class="heart-pulse-icon"><i class="fas fa-heart"></i></div>
+                    <h2 class="heart-box-text">You Are My Favorite Person</h2>
+                </div>
+
+                <div class="ornament-divider">
+                    <span class="line"></span>
+                    <span class="diamond">◆</span>
+                    <span class="line"></span>
+                </div>
+
+                <button class="btn-luxury pulse-glow-heartbeat" id="openBtn">
+                    <span class="btn-text">💖 Click to Begin</span>
+                    <span class="btn-icon"><i class="fas fa-heart-circle-check"></i></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: BEAUTIFUL PHOTO GALLERY ================= -->
+        <section class="page-section" id="page2">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">உங்கள் அழகான நினைவுகள்</h2>
+                    <p class="english-section-subtitle">Your Beautiful Memories</p>
+                </div>
+
+                <div class="slideshow-info">
+                    <span class="badge-slideshow"><i class="fas fa-play"></i> Auto Slideshow Active (3s)</span>
+                </div>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-card" data-index="0" data-src="photo1.jpg" data-caption="Warm Smiles & Joyful Moments">
+                        <img src="photo1.jpg" alt="Memory 1" class="hd-img">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+                    
+                    <div class="gallery-card" data-index="1" data-src="photo2.jpg" data-caption="Pure Kindness & Gentle Heart">
+                        <img src="photo2.jpg" alt="Memory 2" class="hd-img">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+
+                    <div class="gallery-card" data-index="2" data-src="photo3.jpg" data-caption="Inspiring Presence & Dignity">
+                        <img src="photo3.jpg" alt="Memory 3" class="hd-img">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+
+                    <div class="gallery-card" data-index="3" data-src="photo4.jpg" data-caption="Graceful Personality & Leadership">
+                        <img src="photo4.jpg" alt="Memory 4" class="hd-img">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+
+                    <div class="gallery-card" data-index="4" data-src="photo5.jpg" data-caption="Radiant Warmth & Unconditional Love">
+                        <img src="photo5.jpg" alt="Memory 5" class="hd-img">
+                        <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+                    </div>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="3">
+                    <span class="btn-text">➡️ Next Page</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: ABOUT HIS BEAUTIFUL CHARACTER ================= -->
+        <section class="page-section" id="page3">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">உங்கள் நல்ல மனசு</h2>
+                    <p class="english-section-subtitle">Your Beautiful Nature</p>
+                </div>
+
+                <div class="character-cards-list">
+                    <!-- 1. Kind Heart -->
+                    <div class="character-card glass-subcard scroll-reveal">
+                        <div class="char-icon"><i class="fas fa-heart text-pink"></i></div>
+                        <div class="char-info">
+                            <h3 class="char-header text-gold">❤️ நல்ல இதயம் — Kind Heart</h3>
+                            <h4 class="tamil-text char-tamil">உங்கள் மனசு எப்போதும் நல்லதையே நினைக்கும்.</h4>
+                            <p class="english-text char-english">Your heart always chooses kindness.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Caring Person -->
+                    <div class="character-card glass-subcard scroll-reveal">
+                        <div class="char-icon"><i class="fas fa-face-smile-beam text-gold"></i></div>
+                        <div class="char-info">
+                            <h3 class="char-header text-gold">😊 அன்பான மனிதர் — Caring Person</h3>
+                            <h4 class="tamil-text char-tamil">எல்லோரையும் அன்பாக கவனிப்பவர்.</h4>
+                            <p class="english-text char-english">You care for everyone with love.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Respectful -->
+                    <div class="character-card glass-subcard scroll-reveal">
+                        <div class="char-icon"><i class="fas fa-spa text-purple"></i></div>
+                        <div class="char-info">
+                            <h3 class="char-header text-gold">🌸 மரியாதை தருபவர் — Respectful</h3>
+                            <h4 class="tamil-text char-tamil">மற்றவர்களை மதிப்பது உங்கள் அழகு.</h4>
+                            <p class="english-text char-english">Respect is one of your greatest qualities.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Honest -->
+                    <div class="character-card glass-subcard scroll-reveal">
+                        <div class="char-icon"><i class="fas fa-star text-gold"></i></div>
+                        <div class="char-info">
+                            <h3 class="char-header text-gold">🌟 நேர்மையானவர் — Honest</h3>
+                            <h4 class="tamil-text char-tamil">உங்கள் நேர்மை உங்களை இன்னும் சிறப்பாக்குகிறது.</h4>
+                            <p class="english-text char-english">Your honesty makes you even more special.</p>
+                        </div>
+                    </div>
+
+                    <!-- 5. Supportive -->
+                    <div class="character-card glass-subcard scroll-reveal">
+                        <div class="char-icon"><i class="fas fa-handshake-angle text-pink"></i></div>
+                        <div class="char-info">
+                            <h3 class="char-header text-gold">💪 எப்போதும் துணையிருப்பவர் — Supportive</h3>
+                            <h4 class="tamil-text char-tamil">எப்போதும் துணையாக இருப்பவர்.</h4>
+                            <p class="english-text char-english">You always stand beside the people you love.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="4">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: WHY YOU ARE SPECIAL ================= -->
+        <section class="page-section" id="page4">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">நீங்கள் ஏன் மிகவும் சிறப்பானவர்?</h2>
+                    <p class="english-section-subtitle">Why Are You So Special?</p>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- 1 -->
+                    <div class="timeline-item glow-box">
+                        <div class="timeline-num">1</div>
+                        <div class="timeline-content">
+                            <h4 class="tamil-timeline-text text-gold">உங்கள் புன்னகை ஒவ்வொரு நாளையும் பிரகாசமாக்குகிறது.</h4>
+                            <p class="timeline-text">Your smile brightens every day.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="timeline-item glow-box">
+                        <div class="timeline-num">2</div>
+                        <div class="timeline-content">
+                            <h4 class="tamil-timeline-text text-gold">உங்கள் அன்பு மனிதர்களை ஊக்கப்படுத்துகிறது.</h4>
+                            <p class="timeline-text">Your kindness inspires people.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="timeline-item glow-box">
+                        <div class="timeline-num">3</div>
+                        <div class="timeline-content">
+                            <h4 class="tamil-timeline-text text-gold">உங்கள் மரியாதை அனைவரையும் வசதியாக உணர வைக்கிறது.</h4>
+                            <p class="timeline-text">Your respect makes everyone comfortable.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="timeline-item glow-box">
+                        <div class="timeline-num">4</div>
+                        <div class="timeline-content">
+                            <h4 class="tamil-timeline-text text-gold">உங்கள் வார்த்தைகள் நம்பிக்கை தருகின்றன.</h4>
+                            <p class="timeline-text">Your words give confidence.</p>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="timeline-item glow-box">
+                        <div class="timeline-num">5</div>
+                        <div class="timeline-content">
+                            <h4 class="tamil-timeline-text text-gold">உங்கள் வருகை வாழ்க்கையை அழகாக்குகிறது.</h4>
+                            <p class="timeline-text">Your presence makes life beautiful.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="5">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: SWEET WORDS FOR YOU ================= -->
+        <section class="page-section" id="page5">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">என் மனதில் இருந்து சில வார்த்தைகள்</h2>
+                    <p class="english-section-subtitle">Some Words Straight From My Heart</p>
+                </div>
+
+                <div class="typewriter-card glass-subcard">
+                    <div class="heart-badge"><i class="fas fa-heart text-pink"></i></div>
+                    <div class="typewriter-box">
+                        <p class="typewriter-text" id="typewriterText">Initializing sweet words...</p>
+                        <span class="typewriter-cursor">|</span>
+                    </div>
+                </div>
+
+                <div class="typewriter-indicators" id="typewriterDots">
+                    <span class="t-dot active" data-msg="0"></span>
+                    <span class="t-dot" data-msg="1"></span>
+                    <span class="t-dot" data-msg="2"></span>
+                    <span class="t-dot" data-msg="3"></span>
+                    <span class="t-dot" data-msg="4"></span>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="6">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: LIFE SUGGESTIONS ================= -->
+        <section class="page-section" id="page6">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">வாழ்க்கைக்கான சில அழகான ஆலோசனைகள்</h2>
+                    <p class="english-section-subtitle">A Few Beautiful Suggestions for Life</p>
+                </div>
+
+                <div class="advice-grid">
+                    <!-- 1 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">🌱</div>
+                                <h3 class="advice-tamil text-gold">தொடர் கற்றல்</h3>
+                                <h4>Continuous Growth</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">கற்பதை ஒருபோதும் நிறுத்தாதீர்கள்.</h3>
+                                <p>Never stop learning. Every day offers a new lesson and a step towards greatness.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">🌞</div>
+                                <h3 class="advice-tamil text-gold">சுய நம்பிக்கை</h3>
+                                <h4>Self Belief</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">ஒவ்வொரு நாளும் உங்களை நம்புங்கள்.</h3>
+                                <p>Believe in yourself every day. You possess strength beyond imagination.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">❤️</div>
+                                <h3 class="advice-tamil text-gold">அசையாத கருணை</h3>
+                                <h4>Unshakable Kindness</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">கடினமான நேரத்திலும் அன்பாக இருங்கள்.</h3>
+                                <p>Be kind, even when life is difficult. Kindness is a superpower.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">💼</div>
+                                <h3 class="advice-tamil text-gold">கனவை துரத்துங்கள்</h3>
+                                <h4>Pursue Excellence</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">நம்பிக்கையுடன் கனவை துரத்துங்கள்.</h3>
+                                <p>Chase your dreams with confidence. Hard work turns dreams into reality.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">👨‍👩‍👧</div>
+                                <h3 class="advice-tamil text-gold">உறவுகளின் மதிப்பு</h3>
+                                <h4>Cherished Bonds</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">குடும்பத்தையும் நண்பர்களையும் மதியுங்கள்.</h3>
+                                <p>Value family and true friends. Relationships are true life treasures.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">🙏</div>
+                                <h3 class="advice-tamil text-gold">பணிவு</h3>
+                                <h4>Graceful Humility</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">வெற்றிக்கு பிறகும் பணிவாக இருங்கள்.</h3>
+                                <p>Stay humble after success. Humility keeps your heart pure.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front glass-subcard">
+                                <div class="advice-icon">😊</div>
+                                <h3 class="advice-tamil text-gold">மகிழ்ச்சியான குணம்</h3>
+                                <h4>Joyful Spirit</h4>
+                                <span class="tap-hint">(திறக்க கிளிக் செய் / Click to flip)</span>
+                            </div>
+                            <div class="flip-card-back glass-subcard">
+                                <h3 class="text-gold">எப்போதும் புன்னகைத்துக் கொண்டே இருங்கள்.</h3>
+                                <p>Keep smiling. Your smile brings warmth and hope to everyone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="7">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 7: BLESSINGS ================= -->
+        <section class="page-section" id="page7">
+            <div class="page-content glass-card blessings-glass">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">உங்கள் வாழ்க்கை ஆசீர்வதிக்கப்படட்டும்</h2>
+                    <p class="english-section-subtitle">May Your Life Be Filled With Blessings</p>
+                </div>
+
+                <div class="blessing-box glass-subcard glow-gold-border">
+                    <div class="blessing-icon"><i class="fas fa-hands-praying text-gold"></i></div>
+                    
+                    <p class="blessing-para tamil-bless text-gold">கடவுள் உங்கள் வாழ்க்கையை மகிழ்ச்சி, வெற்றி, ஆரோக்கியம், அமைதி மற்றும் அளவில்லாத அன்பால் ஆசீர்வதிக்கட்டும்.</p>
+                    <p class="blessing-para english-bless">May God bless your life with happiness, success, health, peace, and endless love.</p>
+                    
+                    <div class="divider-gold"></div>
+
+                    <p class="blessing-para tamil-bless text-gold">உங்கள் ஒவ்வொரு கனவும் நனவாகட்டும்.</p>
+                    <p class="blessing-para english-bless">May every dream come true.</p>
+                </div>
+
+                <div class="final-quote-highlight glass-subcard">
+                    <h2 class="quote-text-glow">நீங்கள் என் வாழ்க்கையில் மிகவும் சிறந்த மனிதர். ❤️</h2>
+                    <p class="quote-sub-english">You are the best person in my life. ❤️</p>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="8">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 8: IF YOU LIKE ME ================= -->
+        <section class="page-section" id="page8">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">என்னை பிடித்திருந்தால்... 😄</h2>
+                    <p class="english-section-subtitle">If You Like Me... 😄</p>
+                </div>
+
+                <div class="interactive-heart-box">
+                    <div class="big-beating-heart"><i class="fas fa-heart text-pink"></i></div>
+                    <h2 class="question-title tamil-question text-gold">என்னை உங்களுக்கு பிடிக்குமா?</h2>
+                    <p class="question-subtitle">Do You Like Me?</p>
+                </div>
+
+                <div class="choice-buttons-group">
+                    <button class="btn-choice btn-yes bounce-anim" id="yesBtn">
+                        💖 ஆம் (YES)
+                    </button>
+                    <button class="btn-choice btn-no bounce-anim" id="noBtn">
+                        🙈 இல்லை (NO)
+                    </button>
+                </div>
+
+                <div class="playful-toast" id="thinkAgainToast">
+                    <i class="fas fa-face-laugh-wink"></i> மீண்டும் யோசியுங்கள் 😄 (Think Again)
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 9: SURPRISE PAYMENT PAGE (FUNNY) ================= -->
+        <section class="page-section" id="page9">
+            <div class="page-content glass-card section-wide">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">எனக்காக ஒரு சிறிய அன்பு பரிசு 😄</h2>
+                    <p class="english-section-subtitle">A Small Love Gift For Me 😄</p>
+                </div>
+
+                <div class="payment-joke-header">
+                    <h3 class="pay-tagline tamil-pay-title text-gold">எனக்கு ₹1000 அன்போடு அனுப்புங்கள் 😂</h3>
+                    <p class="pay-subnote english-pay-sub">Send ₹1000 with love to me 😂</p>
+                    <span class="pay-joke-badge">(இது ஒரு ஜாலி விளையாட்டு தான் / This is just for fun)</span>
+                </div>
+
+                <div class="payment-cards-grid">
+                    <!-- GPay -->
+                    <div class="pay-card glass-subcard" id="payGPay" data-upi="upi://pay?pa=appa@upi&pn=Appa&am=1000&cu=INR">
+                        <div class="pay-brand gpay-color"><i class="fab fa-google-pay"></i> Google Pay</div>
+                        <div class="qr-box">
+                            <div class="qr-mock">
+                                <i class="fas fa-qrcode"></i>
+                                <span class="qr-overlay-heart"><i class="fas fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <button class="btn-pay-action">
+                            <span class="pay-btn-tamil">கூகுள் பே மூலம் ₹1000 செலுத்துங்கள்</span>
+                            <span class="pay-btn-english">Pay ₹1000 via Google Pay 💖</span>
+                        </button>
+                    </div>
+
+                    <!-- PhonePe -->
+                    <div class="pay-card glass-subcard" id="payPhonePe" data-upi="upi://pay?pa=appa@upi&pn=Appa&am=1000&cu=INR">
+                        <div class="pay-brand phonepe-color"><i class="fas fa-mobile-screen-button"></i> PhonePe</div>
+                        <div class="qr-box">
+                            <div class="qr-mock">
+                                <i class="fas fa-qrcode"></i>
+                                <span class="qr-overlay-heart"><i class="fas fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <button class="btn-pay-action">
+                            <span class="pay-btn-tamil">போன்பே மூலம் ₹1000 செலுத்துங்கள்</span>
+                            <span class="pay-btn-english">Pay ₹1000 via PhonePe 💖</span>
+                        </button>
+                    </div>
+
+                    <!-- Paytm -->
+                    <div class="pay-card glass-subcard" id="payPaytm" data-upi="upi://pay?pa=appa@upi&pn=Appa&am=1000&cu=INR">
+                        <div class="pay-brand paytm-color"><i class="fas fa-wallet"></i> Paytm</div>
+                        <div class="qr-box">
+                            <div class="qr-mock">
+                                <i class="fas fa-qrcode"></i>
+                                <span class="qr-overlay-heart"><i class="fas fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <button class="btn-pay-action">
+                            <span class="pay-btn-tamil">பேடிஎம் மூலம் ₹1000 செலுத்துங்கள்</span>
+                            <span class="pay-btn-english">Pay ₹1000 via Paytm 💖</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="10">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 10: FINAL GIFT ================= -->
+        <section class="page-section" id="page10">
+            <div class="page-content glass-card gift-glass">
+                <div class="section-header">
+                    <h2 class="tamil-section-title text-gold">உங்களுக்கான ஒரு இனிய பரிசு 🎁</h2>
+                    <p class="english-section-subtitle">A Sweet Gift Just For You 🎁</p>
+                </div>
+
+                <div class="gift-box-wrapper" id="giftBoxContainer">
+                    <div class="gift-box" id="giftBoxBtn">
+                        <div class="gift-lid">
+                            <div class="gift-bow"></div>
+                        </div>
+                        <div class="gift-body"></div>
+                        <div class="gift-sparkles"><i class="fas fa-sparkles"></i></div>
+                    </div>
+                    <p class="gift-prompt-text">
+                        <span class="g-prompt-tamil">🎁 பரிசைத் திறக்க பெட்டியைக் கிளிக் செய்யவும்!</span>
+                        <span class="g-prompt-english">🎁 Click the gift box to open!</span>
+                    </p>
+                </div>
+
+                <!-- Revealed Dairy Milk Chocolates Gift Hamper -->
+                <div class="revealed-chocolate-box hidden" id="revealedChocolate">
+                    <h2 class="choco-title text-gold">🍫 டைரி மில்க் சாக்லேட் பரிசு கொத்து 🍫</h2>
+                    <p class="choco-subtitle">Cadbury Dairy Milk Chocolates Gift Hamper</p>
+                    
+                    <div class="chocolates-hamper-grid">
+                        <!-- 1. Dairy Milk Silk -->
+                        <div class="dairy-milk-bar silk-theme">
+                            <div class="dm-header">
+                                <span class="dm-logo">Cadbury</span>
+                                <span class="dm-name">DAIRY MILK</span>
+                                <span class="dm-sub silk-badge">✨ SILK SMOOTH ✨</span>
+                            </div>
+                            <div class="dm-squares">
+                                <span>🍫</span><span>💖</span><span>🍫</span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Dairy Milk Fruit & Nut -->
+                        <div class="dairy-milk-bar fruit-nut-theme">
+                            <div class="dm-header">
+                                <span class="dm-logo">Cadbury</span>
+                                <span class="dm-name">DAIRY MILK</span>
+                                <span class="dm-sub fn-badge">🍇 FRUIT & NUT 🥜</span>
+                            </div>
+                            <div class="dm-squares">
+                                <span>🍇</span><span>🍫</span><span>🥜</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. Dairy Milk Roast Almond -->
+                        <div class="dairy-milk-bar almond-theme">
+                            <div class="dm-header">
+                                <span class="dm-logo">Cadbury</span>
+                                <span class="dm-name">DAIRY MILK</span>
+                                <span class="dm-sub almond-badge">🌰 ROAST ALMOND 🌰</span>
+                            </div>
+                            <div class="dm-squares">
+                                <span>🌰</span><span>🍫</span><span>🌰</span>
+                            </div>
+                        </div>
+
+                        <!-- 4. Dairy Milk Crackle -->
+                        <div class="dairy-milk-bar crackle-theme">
+                            <div class="dm-header">
+                                <span class="dm-logo">Cadbury</span>
+                                <span class="dm-name">DAIRY MILK</span>
+                                <span class="dm-sub crackle-badge">💥 CRACKLE CRISP 💥</span>
+                            </div>
+                            <div class="dm-squares">
+                                <span>💥</span><span>🍫</span><span>💥</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="choco-quote">
+                        "காரணம், ஒவ்வொரு சிறந்த மனிதருக்கும் ஒரு இனிப்பான பரிசு தேவை."<br>
+                        <span>"Because every special person deserves something sweet."</span>
+                    </p>
+                </div>
+
+                <button class="btn-luxury next-btn" data-next="11">
+                    <span class="btn-text">அடுத்த பக்கம் ➔ (Next Page)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= FINAL THANK YOU SCREEN ================= -->
+        <section class="page-section" id="page11">
+            <div class="page-content glass-card final-thankyou-glass">
+                <div class="final-heart-crown">
+                    <i class="fas fa-crown text-gold"></i>
+                    <i class="fas fa-heart text-pink"></i>
+                </div>
+
+                <div class="lang-pair final-header">
+                    <h1 class="tamil-title text-gold">நன்றி ❤️</h1>
+                    <p class="english-subtitle">Thank You For Visiting This Little Surprise ❤️</p>
+                </div>
+
+                <div class="final-message-box glass-subcard">
+                    <h3 class="final-tamil-msg text-gold">இந்த சிறிய அன்பு பரிசு உங்கள் முகத்தில் புன்னகையை வரவழைத்திருக்கும் என்று நம்புகிறேன்.</h3>
+                    <p class="final-smile-msg">"I hope this small surprise made you smile."</p>
+                </div>
+
+                <div class="bottom-glowing-motto">
+                    <h2 class="motto-tamil text-gold">நீங்கள் என் வாழ்க்கையில் மிகவும் சிறந்த மனிதர். ❤️</h2>
+                    <h3 class="motto-text">You Are The Best Person In My Life. ❤️</h3>
+                </div>
+
+                <div class="final-actions">
+                    <button class="btn-luxury btn-outline" id="replayBtn">
+                        <i class="fas fa-rotate-left"></i> மீண்டும் பார்க்க (Replay Experience)
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <button class="lightbox-nav prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-nav next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <img src="" alt="Enlarged Photo" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-modal-card glass-card">
+            <div class="success-icon"><i class="fas fa-circle-check"></i></div>
+            <h2 class="pay-success-title-tamil text-gold">அன்புடன் ₹1000 செலுத்தப்பட்டது! ❤️</h2>
+            <h3 class="pay-success-title">₹1000 Paid With Unlimited Love! ❤️</h3>
+            <p class="pay-success-sub-tamil">எனக்கு அன்போடு ₹1000 அனுப்பியதற்கு மிக்க நன்றி! 😂</p>
+            <p class="pay-success-sub">Thank you for sending ₹1000 with love to me! 😂</p>
+            <button class="btn-luxury" id="closePaymentModal">
+                உங்கள் பரிசைப் பெறுங்கள் 🎁 (Claim Your Gift)
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Audio Element playing Appa Song -->
+    <audio id="bgAudio" src="Aariro Aarariro - Appa Song.mp3" loop preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
